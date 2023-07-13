@@ -39,7 +39,7 @@ public:
         vector<int> result;
         
         // run a loop to check for each 
-        for(int i =0; i,nums.size();i++){
+        for(int i =0; i<nums.size();i++){
             int complement = target - nums[i];
             if(m.find(complement) != m.end()){
                 result.push_back(m[complement]);
