@@ -50,18 +50,15 @@ public:
         }
         
         unordered_map<char, int> counts;
-
-        // Increment the count of each character in string s
+     // Increment the count of each character in string s
         for (char ch : s) {
             counts[ch]++;
         }
-
-        // Decrement the count of each character in string t
+     // Decrement the count of each character in string t
         for (char ch : t) {
             counts[ch]--;
         }
-        
-        // If all counts are zero, it is an anagram
+     // If all counts are zero, it is an anagram
         for (const auto& pair : counts) {
             if (pair.second != 0) {
                 return false;
