@@ -96,3 +96,40 @@ public:
         }
     }
 };
+
+
+// Solution 3 : Using 2 arrays and storing row, col index wwhere 0 is encountred then run another loop to mark them zero
+
+// Tc -> Time Complexity: O(2*(N*M)), where N = no. of rows in the matrix and M = no. of columns in the matrix.
+// Space Complexity: O(N) + O(M), where N = no. of rows in the matrix and M = no. of columns in the matrix.
+
+vector<vector<int>> zeroMatrix(vector<vector<int>> &matrix, int n, int m) {
+
+    int row[n] = {0}; // row array
+    int col[m] = {0}; // col array
+
+    // Traverse the matrix:
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (matrix[i][j] == 0) {
+                // mark ith index of row wih 1:
+                row[i] = 1;
+
+                // mark jth index of col wih 1:
+                col[j] = 1;
+            }
+        }
+    }
+
+    // Finally, mark all (i, j) as 0
+    // if row[i] or col[j] is marked with 1.
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (row[i] || col[j]) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+
+// OPTIMAL 
