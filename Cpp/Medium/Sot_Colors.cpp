@@ -15,6 +15,7 @@
 // a[mid] = 1 -> mid ++
 // a[high] = 2 -> swap(a[mid], a[high]), high++ 
 // when mid> high -> array is sorted
+// TC-> O(N)
 class Solution {
     public:
     void sortColors(vector<int>& nums) 
