@@ -92,4 +92,55 @@ public:
     }
 };
 
-BEST -> Using
+// BEST -> Using 2 pointers -> sort the array -> use 3 pointers i,j,k keep i = 0 , j=1 and k=nums.size()-1 , sum the 3 -> if the sum < 0 -> move j further
+// if the value is more than 0 reduce the k. When a distinct triplet is found move j,k and i such that they are not equal to the previous value;
+// stop the traversal when j>k and only move j and k when they are equal to the previous element.
+// TC-> O(nlogn) + O(n*n)
+// SC -> O(no. of triplets)
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        
+        vector<vector<int>> ans;
+        // sort the arry
+        sort(nums.begin(), nums.end());
+        for(int i=0; i<nums.size(); i++){
+            // for the first value and for not being equal to the previous value
+            if(i>0 && nums[i] == nums[i-1]) continue;
+            int j = i+1, k=nums.size()-1;
+            // crossing condition that is j>k
+            while(j<k){
+                int sum = nums[i] + nums[j] + nums[k];
+                // need to increase
+                if(sum<0){
+                        j++;
+                }
+                // need to decrease
+                else if(sum>0){
+                        k--;
+                }
+                // triplet case
+                else{
+
+                    // STORE and push it to ans
+                    vector<int> temp = {nums[i],nums[j], nums[k]};
+                    ans.push_back(temp);
+
+                    //increase j and reduce k
+                    j++;
+                    k--;
+                    // check only for unique values
+                    while(j<k && nums[j] == nums[j-1]) j++;
+                    while(j<k && nums[k] == nums[k+1]) k--;
+                }
+
+            }
+        }
+
+
+
+        return ans;
+
+    }
+};
