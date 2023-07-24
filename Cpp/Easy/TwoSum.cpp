@@ -23,32 +23,36 @@ public:
 };
 
 
-//  Using map -> findind the complement of target if nums[i] and looking it up in that map while populating the map as well
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        
-        // target sum => i + j also i= target -j 
-        // for each i check if target - i = j exsits if yes then true
+        // create a hashmap and a result vector 
+        // find complement in the mp if found return both index
+        // if not found insert element in map with index
+        // map will be <int,int> as we have to store an index
 
-        unordered_map<int,int> m;
+
+        unordered_map<int,int> mp;
         vector<int> result;
-        
-        // run a loop to check for each 
-        for(int i =0; i<nums.size();i++){
+
+
+        for(int i=0; i<nums.size(); i++){
+
             int complement = target - nums[i];
-            if(m.find(complement) != m.end()){
-                result.push_back(m[complement]);
+
+            if(mp.find(complement)!=mp.end()){
+
+                result.push_back(mp[complement]);
                 result.push_back(i);
-            break;
-            } 
-            else {
-                m.insert({nums[i], i});
+                break;
+            }
+
+            else{
+                mp.insert({nums[i],i});
             }
 
         }
-            
-              return result;
 
+        return result;
     }
 };
