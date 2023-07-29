@@ -2,9 +2,6 @@
 // We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
 // You must solve this problem without using the library's sort function.
 
-
-//Brute force -> Use Sort function -> time complexity -> O(nlogn)
-
 //Better-> create 3 variables cat0, cat1 , cat2 -> iterate over the loop and find the total counts for each variable.
 // For each run a loop till it's value and overwrite the values in the og matirx -> 3 loops 
 // Tc -> O(n+n) -> O(2n) Sc-> O(1)
