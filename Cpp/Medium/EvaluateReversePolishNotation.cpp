@@ -47,20 +47,20 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        stack<int> stk;
+        stack<int> store;
         
         for (int i = 0; i < tokens.size(); i++) {
             string token = tokens[i];
             
             if (token.size() > 1 || isdigit(token[0])) {
-                stk.push(stoi(token));
+                store.push(stoi(token));
                 continue;
             }
             
-            int num2 = stk.top();
-            stk.pop();
-            int num1 = stk.top();
-            stk.pop();
+            int num2 = store.top();
+            store.pop();
+            int num1 = store.top();
+            store.pop();
             
             int result = 0;
             if (token == "+") {
@@ -72,9 +72,9 @@ public:
             } else {
                 result = num1 / num2;
             }
-            stk.push(result);
+            store.push(result);
         }
         
-        return stk.top();
+        return store.top();
     }
 };
