@@ -20,3 +20,53 @@
 
 // 1 <= temperatures.length <= 105
 // 30 <= temperatures[i] <= 100
+
+// brute -> O(n^2)
+// better -> using extra space and a stack 
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n = temperatures.size() - 1;
+        stack<int> s;
+        vector<int>ans;
+
+
+        for(int i = n; i>=0; i--)
+        {
+            if(s.empty()){
+                s.push(i); // index
+                ans.push_back(0);   
+            }
+
+            else
+            {
+                // till we  have a  smaller element pop it 
+                while(!s.empty() && temperatures[s.top()] <= temperatures[i]){
+
+                s.pop();
+                }
+            
+                    if(s.empty()){
+
+                        s.push(i);
+                        ans.push_back(0);   
+
+                    }
+                    else{
+                        
+                        ans.push_back(s.top()-i);
+                        s.push(i);
+                    }
+            }
+        }
+
+    // as we are going in reverse order 
+        reverse( ans.begin(), ans.end());
+        return ans;
+        }
+    
+    
+};
+
+
+// best without using extra space ->
