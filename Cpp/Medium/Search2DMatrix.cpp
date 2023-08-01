@@ -18,3 +18,42 @@
 // n == matrix[i].length
 // 1 <= m, n <= 100
 // -104 <= matrix[i][j], target <= 104
+
+// Brute -> apply binary search in each row and then find the element -> O(n*logn(base2)
+
+// better -> use mid = [mid/n][mid%n]
+  class Solution {
+public:
+   bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    // treat the matrix as an array, just taking care of indices
+    // [0..n*m]
+    // (row, col) -> row*n + col
+    // i -> [i/n][i%n]
+    if(matrix.empty() || matrix[0].empty())
+    {
+        return false;
+    }
+    // m -> rows , n -> size
+    int m = matrix.size(), n = matrix[0].size();
+    int start = 0, end = m*n - 1;
+    while(start <= end)
+    {
+        int mid = start + (end - start)/2;
+        // row -> mid/n , col -> mid%n;
+        int e = matrix[mid/n][mid%n];
+        if(target < e)
+        {
+            end = mid - 1;
+        }
+        else if(target > e)
+        {
+            start = mid + 1;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    return false;
+}
+};
