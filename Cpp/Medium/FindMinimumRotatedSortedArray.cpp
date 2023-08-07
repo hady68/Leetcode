@@ -13,3 +13,25 @@
 // Input: nums = [4,5,6,7,0,1,2]
 // Output: 0
 // Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
+
+class Solution {
+public:
+   int findMin(vector<int> &num) {
+        int start=0,end=num.size()-1;
+        
+        while (start<end) {
+            if (num[start]<num[end])
+                return num[start];
+            
+            int mid = (start+end)/2;
+            
+            if (num[mid]>=num[start]) {
+                start = mid+1;
+            } else {
+                end = mid;
+            }
+        }
+        
+        return num[start];
+    }
+};
