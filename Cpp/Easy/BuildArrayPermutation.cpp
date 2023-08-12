@@ -37,4 +37,30 @@ public:
     }
 };
 
+
+// better -> O(1) -> using mathematical formula SC -> O(1)
+class Solution {
+public:
+    vector<int> buildArray(vector<int>& nums) {
+        
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+         
+        // let a=3 b=4 n=6
+        // a = a + (b%n)*n -> 3 + (4%6)*6-> 3+ 24 -> 27
+        // a= a%n -> 27%6 -> 3
+        // b = a/n -> 27/6 -> 4
+            
+            nums[i] = nums[i] + n*(nums[nums[i]] % n);
+        }
+        
+        for(int i=0; i<n; i++){
+            nums[i] = nums[i]/n;
+        }
+        
+        return nums;
+        
+    }
+}; 
+
 // better -> 
