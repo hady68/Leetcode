@@ -38,7 +38,7 @@
 
 // Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
-// Tc -> O(N+M)
+// Tc -> O(N+M) // Two Pointer Approach
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
@@ -64,5 +64,25 @@ public:
             j--;
             k--;
         }
+    }
+};
+
+// 2 pointer but with additional space ->  using another array to store
+
+// using stl -> Tc -> O(n+m)log(m+n))
+// due to the sort() function
+
+// Space complexity: O(1)
+// We are not using any extra space, so the space complexity is O(1).
+
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for (int j = 0, i = m; j<n; j++){
+            nums1[i] = nums2[j];
+            i++;
+        }
+        sort(nums1.begin(),nums1.end());
     }
 };
