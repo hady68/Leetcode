@@ -26,7 +26,53 @@
 // The result of the merge is [1].
 // Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
  
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i = m - 1; // Index for nums1
+        int j = n - 1; // Index for nums2
+        int k = m + n - 1; // Index for the merged array nums1
 
+        // Merge elements from the end of both arrays
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] >= nums2[j]) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+            k--;
+        }
+
+        // If there are remaining elements in nums2, copy them to nums1
+        while (j >= 0) {
+            nums1[k] = nums2[j];
+            j--;
+            k--;
+        }
+    }
+};
+
+// 2 pointer but with additional space ->  using another array to store
+
+// using stl -> Tc -> O(n+m)log(m+n))
+// due to the sort() function
+
+// Space complexity: O(1)
+// We are not using any extra space, so the space complexity is O(1).
+
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        for (int j = 0, i = m; j<n; j++){
+            nums1[i] = nums2[j];
+            i++;
+        }
+        sort(nums1.begin(),nums1.end());
+    }
+};
 // Constraints:
 
 // nums1.length == m + n
