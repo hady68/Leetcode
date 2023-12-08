@@ -18,7 +18,7 @@
 
 // Time limit: 1 sec
 
-// Brute force 
+// Brute force -> TC -> O(N) SC -> O(1)
 int isSorted(int n, vector<int> a) {
     // Iterating over the array 'A'.
     for (int i = 0; i < n - 1; i++) {
