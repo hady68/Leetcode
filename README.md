@@ -24,6 +24,18 @@ Another productive day of LeetCode problem-solving. Check out the solutions in t
 
 Today's coding challenges have been conquered! Feel free to explore the solutions and provide feedback.
 
+
+### Got placed so stopped my journey, restarting it again ( Resources i am following )
+- Love Babbar DSA course
+- A-Z Striver sheet
+- 100xdevs DSA ( additional )
+will be using these platforms to understand and solve problems multiple times to solidify the foundation.
+### Will be solving problem on Leetcode
+
+## 7 may 2024 - restart 
+![image](https://github.com/khardikk/Problem-Solving/assets/64458111/b2532e4f-ebfb-4239-bcb8-6a8a18f6ab5d)
+
+
 ## Repository Structure
 
 - `JavaScript/`: Contains JavaScript solutions to LeetCode problems.
